@@ -1,33 +1,46 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "./AppContext";
-import { useContext } from "react";
 
-function Chat() {
+export default function Chat() {
   const { user, messages, setMessages } = useContext(AppContext);
-  const { userInput, setUserInput } = useState("");
+  const [userInput, setUserInput] = useState("");
+
   return (
     <div>
       {user && (
-        <div>
+        <div
+          style={{
+            width: "280px",
+            height: "200px",
+            backgroundColor: "lightgreen",
+            padding: "20px",
+            position: "absolute",
+            bottom: "100px",
+            right: "20px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
           <div>
             {messages.map((x, i) => (
               <div key={i}> {x} </div>
             ))}
           </div>
 
-          <div className="w-6xl h-6xl bg-cyan-300">
+          <div>
             <input
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
             />
-            <button 
-                onClick={() => {
-                    setMessages((prev) => [...prev, userInput]);
-                    setUserInput("");
-                }}
-                >
-               Send
+            <button
+              onClick={() => {
+                setMessages((prev) => [...prev, userInput]);
+                setUserInput("");
+              }}
+            >
+              send
             </button>
           </div>
         </div>
@@ -35,5 +48,3 @@ function Chat() {
     </div>
   );
 }
-
-export default Chat;

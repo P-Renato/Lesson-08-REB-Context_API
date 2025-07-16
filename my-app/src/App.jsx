@@ -1,25 +1,22 @@
-import { useState } from 'react'
-import './App.css'
-import Content from './Content.jsx'
-import Chat from './Chat.jsx'
-import Header from './Header.jsx'
-import Footer from './Footer.jsx'
-import { AppContext } from './AppContext.jsx'
+import React from "react";
+import { useState } from "react";
+import Header from "./Header";
+import Content from "./Content";
+import Footer from "./Footer";
+import Chat from "./Chat";
+import { AppContext } from "./AppContext";
 
-function App() {
-  const [user,setUSer] = useState(null)
-  const [messages, setMessages] = useState([])
+export default function App() {
+  const [user, setUser] = useState(null);
+  const [messages, setMessages] = useState([]);
 
   return (
-  <AppContext.Provider value={{user, setUSer, messages, setMessages}}>
-   
-      <Header />
-      <Content />
-      <Footer />
-      <Chat />
-   
-  </AppContext.Provider>
-  )
+    <AppContext.Provider value={{user, setUser, messages, setMessages}}>
+        <Header />
+        <Content />
+        <Footer />
+        <Chat />
+     
+    </AppContext.Provider>
+  );
 }
-
-export default App
